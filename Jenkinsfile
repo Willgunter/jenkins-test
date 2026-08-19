@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn -B clean package'
+                sh 'mvn -B clean package -DskipTests'
             }
         }
         stage('Test') {
@@ -21,7 +21,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'target/test-reports/*.xml'
+                    junit 'target/surefile-reports/*.xml'
                 }
             }
         }
