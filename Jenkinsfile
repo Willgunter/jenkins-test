@@ -1,9 +1,13 @@
 pipeline {
     agent any
+    tools {
+            maven 'Maven'
+    }
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main',
+                    url: 'https://github.com/example/my-project.git'
             }
         }
         stage('Build') {
